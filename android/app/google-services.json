@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "322401872239",
+    "project_id": "authenticateme-a7661",
+    "storage_bucket": "authenticateme-a7661.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322401872239:android:41542517dbbbf93695209a",
+        "android_client_info": {
+          "package_name": "com.example.authenticateme"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5ZPF7Mmn4D87df3SSi8RH4JKt6_AnJ7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
