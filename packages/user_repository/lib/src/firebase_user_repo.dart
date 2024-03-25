@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:user_repository/src/models/models.dart';
-import 'package:user_repository/src/user_repository.dart';
+import 'package:user_repository/src/user_repo.dart';
 
 class FirebaseUserRepo implements UserRepository {
   final userCollection = FirebaseFirestore.instance.collection('user');
