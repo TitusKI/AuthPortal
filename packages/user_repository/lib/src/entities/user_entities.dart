@@ -1,19 +1,19 @@
 import 'package:equatable/equatable.dart';
 
 class MyUserEntity extends Equatable {
-  final String MyUserId;
+  final String userId;
   final String email;
   final String name;
 
   const MyUserEntity({
-    required this.MyUserId,
+    required this.userId,
     required this.email,
     required this.name,
   });
   // Send to the firestore
   Map<String, Object?> toDocument() {
     return {
-      'MyUserId': MyUserId,
+      'userId': userId,
       'email': email,
       'name': name,
     };
@@ -22,12 +22,12 @@ class MyUserEntity extends Equatable {
 // to recieve data from Firestore
   static MyUserEntity fromDocument(Map<String, dynamic> doc) {
     return MyUserEntity(
-      MyUserId: doc['MyUserId'],
+      userId: doc['userId'],
       email: doc['email'],
       name: doc['name'],
     );
   }
 
   @override
-  List<Object?> get props => [MyUserId, email, name];
+  List<Object?> get props => [userId, email, name];
 }
