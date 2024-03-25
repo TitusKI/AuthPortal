@@ -31,6 +31,7 @@ class SimpleBlocObsever extends BlocObserver {
     log('onError -- bloc: ${bloc.runtimeType}, error: $error');
     super.onError(bloc, error, stackTrace);
   }
+  
 
   @override
   void onClose(BlocBase bloc) {
