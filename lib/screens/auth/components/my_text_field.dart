@@ -12,6 +12,7 @@ class MyTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final String? errorMsg;
   final String? Function(String?)? onChanged;
+  final Color textColor;
 
     const MyTextField({
     super.key,
@@ -26,6 +27,7 @@ class MyTextField extends StatelessWidget {
     this.focusNode,
     this.errorMsg,
     this.onChanged,
+    this.textColor = Colors.black,
   });
 
   @override
@@ -45,10 +47,11 @@ class MyTextField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Theme.of(context).colorScheme.surface),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
         ),
         fillColor: Colors.grey.shade200,
         filled: true,
+        
         hintText: hintText,
         hintStyle: TextStyle(
           color: Colors.grey[500],
@@ -56,6 +59,7 @@ class MyTextField extends StatelessWidget {
         errorText: errorMsg,
       ),
       validator: validator,
+      style: TextStyle(color: textColor ),
       focusNode: focusNode,
       onChanged: onChanged,
     );

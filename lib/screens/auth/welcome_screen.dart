@@ -106,7 +106,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         children: [
 
                          const SignInScreen(),
-                          Container(),
+                         
                         ],
                       ))
                     ],
