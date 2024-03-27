@@ -1,9 +1,13 @@
 import 'dart:ui';
 
+import 'package:authenticateme/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:authenticateme/blocs/sign_in_bloc/sign_in_bloc_bloc.dart';
+import 'package:authenticateme/blocs/sign_up_bloc/sign_up_bloc_bloc.dart';
 import 'package:authenticateme/screens/auth/sign_in_screen.dart';
 import 'package:authenticateme/screens/auth/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -73,7 +77,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   child: Column(
                     children: [
                       Padding(
-                        padding:  const EdgeInsets.symmetric(horizontal: 50.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 50.0),
                         child: TabBar(
                           controller: tabController,
                           unselectedLabelColor:
@@ -104,10 +108,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       Expanded(
                           child: TabBarView(
                         controller: tabController,
-                        children: const [
-
-                         SignInScreen(),
-                           SignUpScreen()
+                        children:  [
+                          BlocProvider(
+                            create: (context) => SignInBlocBloc(
+                              userRepository: context.read<AuthenticationBloc>().userRepository
+                            ), 
+                            child: const SignInScreen(),
+                          ),
+                          BlocProvider(
+                            create: (context) => SignUpBlocBloc(
+                              userRepository: context.read<AuthenticationBloc>().userRepository
+                            ),
+                            child: const SignUpScreen(),
+                          )
                         ],
                       ))
                     ],
