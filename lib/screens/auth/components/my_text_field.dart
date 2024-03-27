@@ -13,8 +13,10 @@ class MyTextField extends StatelessWidget {
   final String? errorMsg;
   final String? Function(String?)? onChanged;
   final Color textColor;
+  final Color iconColor;
 
-    const MyTextField({
+
+     MyTextField({
     super.key,
     required this.controller,
     required this.hintText,
@@ -28,6 +30,7 @@ class MyTextField extends StatelessWidget {
     this.errorMsg,
     this.onChanged,
     this.textColor = Colors.black,
+    this.iconColor = const Color.fromARGB(255, 209, 160, 228),
   });
 
   @override
@@ -43,8 +46,18 @@ class MyTextField extends StatelessWidget {
       focusNode: focusNode,
       onChanged: onChanged,
       decoration: InputDecoration(
-        suffixIcon: suffixIcon,
-        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon != null 
+        ? IconTheme(data: IconThemeData(color: iconColor), child: suffixIcon!)
+        : null
+        ,
+
+       prefixIcon: prefixIcon != null
+            ? IconTheme(
+                data: IconThemeData(color: Theme.of(context).colorScheme.primary), // Set icon color here
+                child: prefixIcon!,
+              )
+            : null,
+
         iconColor: Theme.of(context).colorScheme.primary,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -54,12 +67,12 @@ class MyTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
         ),
-        fillColor: const Color.fromARGB(255, 84, 82, 82),
+        fillColor: Colors.grey.shade300,
         filled: true,
         
         hintText: hintText,
-        hintStyle: TextStyle(
-          color: Color.fromARGB(255, 212, 203, 203),
+        hintStyle: const TextStyle(
+          color: Color.fromARGB(115, 88, 85, 85),
         ),
         errorText: errorMsg,
       ),
