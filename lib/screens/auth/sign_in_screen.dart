@@ -63,7 +63,7 @@ class _SignInScreenState extends State<SignInScreen> {
               validator: (valpass) {
                 if (valpass!.isEmpty) {
                   return "Please fill in this field";
-                } else if (!valpass.isPasswordNormal1()) {
+                } else if (!valpass.isPasswordHard()) {
                   return "Please enter a valid password";
                 }
                 return null;
@@ -79,7 +79,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       }
                     });
                   },
-                  icon: Icon(iconPassword)),
+                  icon: Icon(iconPassword
+                  , color: Theme.of(context).colorScheme.primary,
+                  )),
             ),
           ),
           const SizedBox(height: 20.0),
