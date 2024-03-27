@@ -95,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     });
                   }
                   if (pass.contains(
-                      RegExp(r'''[!@#$%^&*()-_+=~{}:";',./|\\\[\]<>?]'''))) {
+                    RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
                     setState(() {
                       containsSpecialChar = true;
                     });
@@ -134,7 +134,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         }
                       });
                     },
-                    icon: Icon(iconPassword)),
+                    icon: Icon(iconPassword),
+                    color: Theme.of(context).colorScheme.primary,
+                    ),
               ),
             ),
             const SizedBox(
