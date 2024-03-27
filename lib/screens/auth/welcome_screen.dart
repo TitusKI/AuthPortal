@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:authenticateme/screens/auth/sign_in_screen.dart';
+import 'package:authenticateme/screens/auth/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -103,10 +104,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       Expanded(
                           child: TabBarView(
                         controller: tabController,
-                        children: [
+                        children: const [
 
-                         const SignInScreen(),
-                          Container()
+                         SignInScreen(),
+                           SignUpScreen()
                         ],
                       ))
                     ],

@@ -38,9 +38,14 @@ class MyTextField extends StatelessWidget {
       keyboardType: keyboardType,
       onTap: onTap,
       textInputAction: TextInputAction.next,
+       validator: validator,
+      style: TextStyle(color: textColor ),
+      focusNode: focusNode,
+      onChanged: onChanged,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
+        iconColor: Theme.of(context).colorScheme.primary,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(color: Colors.transparent),
@@ -49,19 +54,16 @@ class MyTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
         ),
-        fillColor: Colors.grey.shade200,
+        fillColor: const Color.fromARGB(255, 84, 82, 82),
         filled: true,
         
         hintText: hintText,
         hintStyle: TextStyle(
-          color: Colors.grey[500],
+          color: Color.fromARGB(255, 212, 203, 203),
         ),
         errorText: errorMsg,
       ),
-      validator: validator,
-      style: TextStyle(color: textColor ),
-      focusNode: focusNode,
-      onChanged: onChanged,
+     
     );
   }
 }

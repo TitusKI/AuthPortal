@@ -16,7 +16,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool signInRequired = false;
-  IconData iconPassword = CupertinoIcons.eye_fill;
+  IconData iconPassword = Icons.remove_red_eye_rounded;
   bool obscurePassword = true;
   String? _errorMsg;
 
@@ -36,8 +36,7 @@ class _SignInScreenState extends State<SignInScreen> {
               hintText: 'Email',
               obscureText: false,
               keyboardType: TextInputType.emailAddress,
-              prefixIcon: Icon(Icons.mail,
-                  color: Theme.of(context).colorScheme.primary),
+              prefixIcon: const Icon(CupertinoIcons.mail),
               errorMsg: _errorMsg,
               validator: (validate) {
                 if (validate!.isEmpty) {
@@ -59,7 +58,7 @@ class _SignInScreenState extends State<SignInScreen> {
               hintText: "password",
               obscureText: obscurePassword,
               keyboardType: TextInputType.visiblePassword,
-              prefixIcon: const Icon(CupertinoIcons.lock_fill),
+              prefixIcon: const Icon(Icons.lock_outline),
               errorMsg: _errorMsg,
               validator: (valpass) {
                 if (valpass!.isEmpty) {
@@ -74,7 +73,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     setState(() {
                       obscurePassword = !obscurePassword;
                       if (obscurePassword) {
-                        iconPassword = CupertinoIcons.eye_fill;
+                        iconPassword = Icons.remove_red_eye_rounded;
                       } else {
                         iconPassword = CupertinoIcons.eye_slash_fill;
                       }
