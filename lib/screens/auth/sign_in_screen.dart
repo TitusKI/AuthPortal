@@ -1,6 +1,10 @@
+
+
+import 'package:authenticateme/blocs/sign_in_bloc/sign_in_bloc_bloc.dart';
 import 'package:authenticateme/screens/auth/components/my_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:regexpattern/regexpattern.dart';
 
@@ -90,7 +94,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: TextButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
+                      if (_formKey.currentState!.validate()) {
+                        context.read<SignInBlocBloc>().add(SignInRequired(emailController.text, passwordController.text));
+                      }
                     },
                     style: TextButton.styleFrom(
                       elevation: 3.0,
