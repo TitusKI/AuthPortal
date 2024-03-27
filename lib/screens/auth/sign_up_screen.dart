@@ -2,6 +2,7 @@ import 'package:authenticateme/screens/auth/components/my_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:regexpattern/regexpattern.dart';
+import 'package:user_repository/user_repository.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -150,7 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "•	 1 Uppercase",
+                    "• 1 Uppercase",
                     style: TextStyle(
                       color: containsUpperCase 
                       ? Colors.green
@@ -159,7 +160,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   ),
                     Text(
-                    "•	 1 Uppercase",
+                    "• 1 Lowercase",
+                    style: TextStyle(
+                      color: containsLowerCase 
+                      ? Colors.green
+                      : Theme.of(context).colorScheme.onBackground
+                    ),
+
+                  ),
+                    Text(
+                    "• 1 Number",
                     style: TextStyle(
                       color: containsUpperCase 
                       ? Colors.green
@@ -167,28 +177,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
 
                   ),
-                    Text(
-                    "•	 1 Uppercase",
+                    
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "• 1 Special character",
                     style: TextStyle(
-                      color: containsUpperCase 
+                      color: containsSpecialChar
                       ? Colors.green
                       : Theme.of(context).colorScheme.onBackground
                     ),
 
                   ),
                     Text(
-                    "•	 1 Uppercase",
+                    "• 8 minimum character",
                     style: TextStyle(
-                      color: containsUpperCase 
-                      ? Colors.green
-                      : Theme.of(context).colorScheme.onBackground
-                    ),
-
-                  ),
-                    Text(
-                    "•	 1 Uppercase",
-                    style: TextStyle(
-                      color: containsUpperCase 
+                      color: contains8Length
                       ? Colors.green
                       : Theme.of(context).colorScheme.onBackground
                     ),
@@ -197,7 +204,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               )
             ],
-          )
+          ),
+         const SizedBox(height: 10,),
+         SizedBox(
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: MyTextField(controller: nameController, hintText: 'Name', obscureText: false, keyboardType: TextInputType.name,
+            prefixIcon: const Icon(CupertinoIcons.person_fill),
+             validator: (valpass) {
+                if (valpass!.isEmpty) {
+                  return "Please fill in this field";
+                } else if (valpass.length > 25) {
+                  return "Name too long";
+                }
+                return null;
+              },
+            
+            ),
+
+         ),
+         SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+         !signUpRequired
+         ? SizedBox(
+          width: MediaQuery.of(context).size.width * 0.5,
+          child: TextButton(onPressed: (){
+            if(_formKey.currentState!.validate()){
+              MyUser myUser = MyUser.empty;
+              myUser = myUser.copyWith(
+                email: emailController.text,
+                name : nameController.text,
+              );
+              setState(() {
+                
+              });
+            }
+          },
+          style: TextButton.styleFrom(
+
+          ),
+          
+           child: child)
+         )
+
           ],
         )
       ),
