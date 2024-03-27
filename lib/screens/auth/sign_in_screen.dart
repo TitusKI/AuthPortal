@@ -36,7 +36,8 @@ class _SignInScreenState extends State<SignInScreen> {
               hintText: 'Email',
               obscureText: false,
               keyboardType: TextInputType.emailAddress,
-              prefixIcon: const Icon(Icons.mail),
+              prefixIcon: Icon(Icons.mail,
+                  color: Theme.of(context).colorScheme.primary),
               errorMsg: _errorMsg,
               validator: (validate) {
                 if (validate!.isEmpty) {
@@ -60,30 +61,60 @@ class _SignInScreenState extends State<SignInScreen> {
               keyboardType: TextInputType.visiblePassword,
               prefixIcon: const Icon(CupertinoIcons.lock_fill),
               errorMsg: _errorMsg,
-            validator:(valpass) {
-              if(valpass!.isEmpty){
-                return "Please fill in this field";
-
-              }
-              else if (!valpass.isPasswordNormal1()){
-                return "Please enter a valid password";
-              }
-              return null;
-              
-            },
-            suffixIcon: IconButton(onPressed: (){
-              setState(){
-                obscurePassword = !obscurePassword;
-                if(obscurePassword){
-                  iconPassword =  CupertinoIcons.eye_fill;
-
-                }else{
-                  iconPassword = CupertinoIcons.eye_slash_fill;
+              validator: (valpass) {
+                if (valpass!.isEmpty) {
+                  return "Please fill in this field";
+                } else if (!valpass.isPasswordNormal1()) {
+                  return "Please enter a valid password";
                 }
-              }
-            }, icon: Icon(iconPassword)),
+                return null;
+              },
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      obscurePassword = !obscurePassword;
+                      if (obscurePassword) {
+                        iconPassword = CupertinoIcons.eye_fill;
+                      } else {
+                        iconPassword = CupertinoIcons.eye_slash_fill;
+                      }
+                    });
+                  },
+                  icon: Icon(iconPassword)),
             ),
           ),
+          const SizedBox(height: 20.0),
+          !signInRequired
+              ? SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: TextButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {}
+                    },
+                    style: TextButton.styleFrom(
+                      elevation: 3.0,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(60),
+                      ),
+                    ),
+                    child: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                      child: Text(
+                        'Sign In',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              : const CircularProgressIndicator()
         ],
       ),
     );
