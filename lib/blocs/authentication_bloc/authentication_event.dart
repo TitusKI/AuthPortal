@@ -10,6 +10,6 @@ class AuthenticationUserChanged extends AuthenticationEvent{
   const AuthenticationUserChanged(this.user);
   
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [];
 }
