@@ -1,5 +1,3 @@
-
-
 import 'package:authenticateme/blocs/sign_in_bloc/sign_in_bloc_bloc.dart';
 import 'package:authenticateme/screens/auth/components/my_text_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -83,8 +81,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       }
                     });
                   },
-                  icon: Icon(iconPassword
-                  , color: Theme.of(context).colorScheme.primary,
+                  icon: Icon(
+                    iconPassword,
+                    color: Theme.of(context).colorScheme.primary,
                   )),
             ),
           ),
@@ -95,11 +94,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: TextButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        context.read<SignInBlocBloc>().add(SignInRequired(emailController.text, passwordController.text));
+                        context.read<SignInBlocBloc>().add(SignInRequired(
+                            emailController.text, passwordController.text));
                       }
                     },
                     style: TextButton.styleFrom(
-                      
                       elevation: 3.0,
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       foregroundColor: Colors.white,
@@ -122,7 +121,25 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                 )
-              : const CircularProgressIndicator()
+              : const CircularProgressIndicator(),
+          const SizedBox(
+            height: 10.0,
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: const Align(
+              alignment: Alignment.centerRight,
+              child:  Text(
+                '  Forget Password?   ',
+                // textAlign: TextAlign.end,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.blueGrey,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
