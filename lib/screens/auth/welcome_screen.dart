@@ -100,14 +100,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                                 'Have account? Sign in!',
                                 style: TextStyle(
                                     fontSize: 15,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
                                     color: Colors.blueGrey),
                               ),
                               Text(
                                 'New here? Sign up!',
                                 style: TextStyle(
                                     fontSize: 15,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
                                     color: Colors.blueGrey),
                               )
                             ],
