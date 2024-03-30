@@ -5,8 +5,9 @@ import 'package:authenticateme/blocs/sign_in_bloc/sign_in_bloc_bloc.dart';
 import 'package:authenticateme/blocs/sign_up_bloc/sign_up_bloc_bloc.dart';
 import 'package:authenticateme/screens/auth/sign_in_screen.dart';
 import 'package:authenticateme/screens/auth/sign_up_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -71,6 +72,56 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
                   child: Container()),
               Align(
+                alignment: AlignmentDirectional.center,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const SizedBox(
+                      height: 300,
+                    ),
+                    Center(
+                      child: Column(
+                        children: [
+                          Text(
+                            'Welcome!',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Have account? Sign in!',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blueGrey),
+                              ),
+                              Text(
+                                'New here? Sign up!',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blueGrey),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                ),
+              ),
+              Align(
                 alignment: Alignment.bottomCenter,
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height / 1.8,
@@ -108,17 +159,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       Expanded(
                           child: TabBarView(
                         controller: tabController,
-                        children:  [
+                        children: [
                           BlocProvider(
                             create: (context) => SignInBlocBloc(
-                              userRepository: context.read<AuthenticationBloc>().userRepository
-                            ), 
+                                userRepository: context
+                                    .read<AuthenticationBloc>()
+                                    .userRepository),
                             child: const SignInScreen(),
                           ),
                           BlocProvider(
                             create: (context) => SignUpBlocBloc(
-                              userRepository: context.read<AuthenticationBloc>().userRepository
-                            ),
+                                userRepository: context
+                                    .read<AuthenticationBloc>()
+                                    .userRepository),
                             child: const SignUpScreen(),
                           )
                         ],

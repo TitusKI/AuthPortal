@@ -3,6 +3,7 @@ part of 'sign_in_bloc_bloc.dart';
 @immutable
 sealed class SignInBlocState extends Equatable {
   const SignInBlocState();
+  @override
   List<Object?> get props => [];
 
 }
