@@ -1,5 +1,6 @@
 import 'package:authenticateme/blocs/sign_in_bloc/sign_in_bloc_bloc.dart';
 import 'package:authenticateme/screens/auth/components/my_text_field.dart';
+import 'package:authenticateme/screens/auth/reset_password_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,6 +56,7 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.width * 0.3,
             child: MyTextField(
               controller: passwordController,
               hintText: "password",
@@ -91,6 +93,7 @@ class _SignInScreenState extends State<SignInScreen> {
           !signInRequired
               ? SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
+              
                   child: TextButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -126,7 +129,12 @@ class _SignInScreenState extends State<SignInScreen> {
             height: 10.0,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ResetScreen(email: emailController.text,),));
+              // if(_formKey.currentState!.validate()){
+              //   context.read<SignInBlocBloc>().add(ResetPasswordRequired(emailController.text));
+              // }
+            },
             child: const Align(
               alignment: Alignment.centerRight,
               child:  Text(
