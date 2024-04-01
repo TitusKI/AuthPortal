@@ -20,7 +20,7 @@ class MyUserEntity extends Equatable {
   }
 
 // to recieve data from Firestore
-  static MyUserEntity fromDocument(Map<String, dynamic> doc) {
+   MyUserEntity fromDocument(Map<String, dynamic> doc) {
     return MyUserEntity(
       userId: doc['userId'],
       email: doc['email'],
