@@ -57,4 +57,8 @@ class FirebaseUserRepo implements UserRepository {
   Future<void> logOut() async {
     await _firebaseAuth.signOut();
   }
+  @override
+  Future<void> forgetPassword(String email) async{
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
+  }
 }
