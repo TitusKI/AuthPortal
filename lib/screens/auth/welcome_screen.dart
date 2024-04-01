@@ -77,7 +77,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const SizedBox(
-                      height: 300,
+                      height: 150,
                     ),
                     Center(
                       child: Column(
@@ -124,7 +124,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               Align(
                 alignment: Alignment.bottomCenter,
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 1.8,
+                  height: MediaQuery.of(context).size.height / 1.5,
                   child: Column(
                     children: [
                       Padding(
