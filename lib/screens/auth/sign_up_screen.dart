@@ -81,6 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.9,
+               
                 child: MyTextField(
                   controller: passwordController,
                   hintText: "Password",
@@ -234,8 +235,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
+              const SizedBox(
+                height: 10.0,
+                // height: MediaQuery.of(context).size.height * 0.02,
               ),
               !signUpRequired
                   ? SizedBox(
