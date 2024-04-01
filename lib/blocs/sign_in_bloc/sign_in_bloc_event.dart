@@ -12,3 +12,9 @@ final String password;
 const SignInRequired(this.email, this.password);
 }
 class SignOutRequired extends SignInBlocEvent{}
+class ResetPasswordRequired extends SignInBlocEvent{
+
+  final String email;
+  const ResetPasswordRequired(this.email);
+}
+

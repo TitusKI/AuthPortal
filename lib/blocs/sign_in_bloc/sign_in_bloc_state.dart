@@ -15,3 +15,4 @@ final class SignInBlocInitial extends SignInBlocState {}
  const SignInFailure({this.messsage});
  }
  class SignInProgress extends SignInBlocState{}
+ class ForgetPassword extends SignInBlocState{}
